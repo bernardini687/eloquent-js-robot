@@ -15,8 +15,6 @@ const roads = [
   'Shop-Town Hall',
 ];
 
-// export default roads;
-
 const buildGraph = (edges) => {
   const graph = Object.create(null); // create object with no prototype
   function addEdge(from, to) {
@@ -36,4 +34,5 @@ const buildGraph = (edges) => {
 
 const roadGraph = buildGraph(roads);
 
-console.log(roadGraph);
+// console.log(roadGraph);
+export default roadGraph;

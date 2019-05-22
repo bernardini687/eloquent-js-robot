@@ -1,3 +1,5 @@
+import roadGraph from './data/roads';
+
 class VillageState {
   constructor(place, parcels) {
     this.place = place;
