@@ -1,4 +1,5 @@
 import roadGraph from './data/roads';
+import mailRoute from './data/mail_route';
 import VillageState from './village_state';
 
 const runRobot = (state, robot, memory) => {
@@ -19,6 +20,13 @@ const randomPick = arr => arr[Math.floor(Math.random() * arr.length)];
 // pick a random direction from the nodes available at the current place
 const randomRobot = state => ({ direction: randomPick(roadGraph[state.place]) });
 
+const routeRobot = (state, memory) => {
+  if (memory.length === 0) {
+    memory = mailRoute;
+  }
+  return { direction: memory[0], memory: memory.slice(1) };
+};
+
 VillageState.random = (parcelCount = 5) => {
   const parcels = [];
   for (let i = 0; i < parcelCount; i += 1) {
@@ -32,4 +40,5 @@ VillageState.random = (parcelCount = 5) => {
   return new VillageState('Post Office', parcels);
 };
 
-runRobot(VillageState.random(), randomRobot);
+// runRobot(VillageState.random(), randomRobot);
+runRobot(VillageState.random(), routeRobot, []);

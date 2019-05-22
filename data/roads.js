@@ -34,5 +34,4 @@ const buildGraph = (edges) => {
 
 const roadGraph = buildGraph(roads);
 
-// console.log(roadGraph);
 export default roadGraph;
