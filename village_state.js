@@ -8,7 +8,7 @@ class VillageState {
 
   move(destination) {
     if (!roadGraph[this.place].includes(destination)) {
-      return this;
+      return this; // return the old state for invalid moves
     }
     const parcels = this.parcels.map((parcel) => {
       if (parcel.place !== this.place) return parcel;
