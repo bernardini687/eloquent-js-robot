@@ -11,9 +11,11 @@ class VillageState {
       return this; // return the old state for invalid moves
     }
     const parcels = this.parcels.map((parcel) => {
+      // leave parcel where it is if robot is not there
       if (parcel.place !== this.place) return parcel;
+      // else pick parcel up
       return { place: destination, address: parcel.address };
-    }).filter(parcel => parcel.place !== parcel.address);
+    }).filter(parcel => parcel.place !== parcel.address); // keep only undelivered parcels
     return new VillageState(destination, parcels);
   }
 }
