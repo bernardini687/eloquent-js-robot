@@ -1,6 +1,6 @@
 import roadGraph from './data/roads';
 
-class VillageState {
+export default class VillageState {
   constructor(place, parcels) {
     this.place = place;
     this.parcels = parcels;
@@ -20,13 +20,13 @@ class VillageState {
   }
 }
 
-const first = new VillageState(
-  'Post Office',
-  [{ place: 'Post Office', address: "Alice's House" }],
-);
-const next = first.move("Alice's House");
-const invalid = first.move('Farm');
+// const first = new VillageState(
+//   'Post Office',
+//   [{ place: 'Post Office', address: "Alice's House" }],
+// );
+// const next = first.move("Alice's House");
+// const invalid = first.move('Farm');
 
-console.log(first);
-console.log(next);
-console.log(invalid);
+// console.log(first);
+// console.log(next);
+// console.log(invalid);
