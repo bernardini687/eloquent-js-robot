@@ -17,3 +17,15 @@ class VillageState {
     return new VillageState(destination, parcels);
   }
 }
+
+const first = new VillageState(
+  'Post Office',
+  [{ place: 'Post Office', address: "Alice's House" }],
+);
+
+const next = first.move("Alice's House");
+
+console.log(next.place);
+console.log(next.parcels);
+console.log(first.place);
+console.log(first.parcels);
