@@ -1,4 +1,4 @@
-import VillageState from './village_state';
+import roadGraph from './data/roads';
 
 const runRobot = (state, robot, memory) => {
   for (let turn = 0; ; turn + 1) {
@@ -12,3 +12,8 @@ const runRobot = (state, robot, memory) => {
     console.log(`Moved to ${action.direction}`);
   }
 };
+
+const randomPick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+// pick a random direction from the nodes available at the current place
+const randomRobot = state => ({ direction: randomPick(roadGraph[state.place]) });
