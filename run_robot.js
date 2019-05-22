@@ -20,12 +20,12 @@ const randomPick = arr => arr[Math.floor(Math.random() * arr.length)];
 // pick a random direction from the nodes available at the current place
 // const randomRobot = state => ({ direction: randomPick(roadGraph[state.place]) });
 
-const routeRobot = (state, memory) => {
-  if (memory.length === 0) {
-    memory = mailRoute;
-  }
-  return { direction: memory[0], memory: memory.slice(1) };
-};
+// const routeRobot = (state, memory) => {
+//   if (memory.length === 0) {
+//     memory = mailRoute;
+//   }
+//   return { direction: memory[0], memory: memory.slice(1) };
+// };
 
 const findRoute = (graph, from, to) => {
   const work = [{ at: from, route: [] }];
@@ -38,6 +38,18 @@ const findRoute = (graph, from, to) => {
       }
     }
   }
+};
+
+const goalOrientedRobot = ({ place, parcels }, route) => {
+  if (route.length === 0) {
+    const parcel = parcels[0];
+    if (parcel.place !== place) {
+      route = findRoute(roadGraph, place, parcel.place);
+    } else {
+      route = findRoute(roadGraph, place, parcel.address);
+    }
+  }
+  return { direction: route[0], memory: route.slice(1) };
 };
 
 VillageState.random = (parcelCount = 5) => {
@@ -54,4 +66,4 @@ VillageState.random = (parcelCount = 5) => {
 };
 
 // runRobot(VillageState.random(), randomRobot);
-runRobot(VillageState.random(), routeRobot, []);
+runRobot(VillageState.random(), goalOrientedRobot, []);
