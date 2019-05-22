@@ -26,10 +26,11 @@ const buildGraph = (edges) => {
       graph[from].push(to);
     }
   }
-  for (let [from, to] of edges.map(r => r.split('-'))) {
+  edges.map(road => road.split('-')).forEach((pair) => {
+    const [from, to] = pair;
     addEdge(from, to);
     addEdge(to, from);
-  }
+  });
   return graph;
 };
 
