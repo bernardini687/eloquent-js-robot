@@ -22,10 +22,9 @@ const first = new VillageState(
   'Post Office',
   [{ place: 'Post Office', address: "Alice's House" }],
 );
-
 const next = first.move("Alice's House");
+const invalid = first.move('Farm');
 
-console.log(next.place);
-console.log(next.parcels);
-console.log(first.place);
-console.log(first.parcels);
+console.log(first);
+console.log(next);
+console.log(invalid);
