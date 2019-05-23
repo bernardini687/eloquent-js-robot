@@ -15,6 +15,17 @@ const runRobot = (state, robot, memory) => {
   }
 };
 
+const runCompare = (state, robot, memory) => {
+  for (let turn = 0; ; turn += 1) {
+    if (state.parcels.length === 0) {
+      return turn;
+    }
+    const action = robot(state, memory);
+    state = state.move(action.direction);
+    memory = action.memory;
+  }
+};
+
 VillageState.random = (parcelCount = 5) => {
   const parcels = [];
   for (let i = 0; i < parcelCount; i += 1) {
@@ -29,6 +40,6 @@ VillageState.random = (parcelCount = 5) => {
 };
 
 // runRobot(VillageState.random(), randomRobot);
-runRobot(VillageState.random(), goalOrientedRobot, []);
+// runRobot(VillageState.random(), goalOrientedRobot, []);
 
-export default runRobot;
+export default runCompare;
