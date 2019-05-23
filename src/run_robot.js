@@ -30,3 +30,5 @@ VillageState.random = (parcelCount = 5) => {
 
 // runRobot(VillageState.random(), randomRobot);
 runRobot(VillageState.random(), goalOrientedRobot, []);
+
+export default runRobot;

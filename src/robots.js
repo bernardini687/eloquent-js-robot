@@ -1,5 +1,6 @@
 // import mailRoute from './data/mail_route';
 import roadGraph from '../data/roads';
+import mailRoute from '../data/mail_route';
 
 const findRoute = (graph, from, to) => {
   const work = [{ at: from, route: [] }];
@@ -19,12 +20,12 @@ const randomPick = arr => arr[Math.floor(Math.random() * arr.length)];
 // pick a random direction from the nodes available at the current place
 // const randomRobot = state => ({ direction: randomPick(roadGraph[state.place]) });
 
-// const routeRobot = (state, memory) => {
-//   if (memory.length === 0) {
-//     memory = mailRoute;
-//   }
-//   return { direction: memory[0], memory: memory.slice(1) };
-// };
+const routeRobot = (state, memory) => {
+  if (memory.length === 0) {
+    memory = mailRoute;
+  }
+  return { direction: memory[0], memory: memory.slice(1) };
+};
 
 const goalOrientedRobot = ({ place, parcels }, route) => {
   if (route.length === 0) {
@@ -38,4 +39,4 @@ const goalOrientedRobot = ({ place, parcels }, route) => {
   return { direction: route[0], memory: route.slice(1) };
 };
 
-export { randomPick, goalOrientedRobot };
+export { randomPick, routeRobot, goalOrientedRobot };
