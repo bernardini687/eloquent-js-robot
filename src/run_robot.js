@@ -16,10 +16,8 @@ const runRobot = (state, robot, memory) => {
 };
 
 const runCompare = (state, robot, memory) => {
-  for (let turn = 0; ; turn += 1) {
-    if (state.parcels.length === 0) {
-      return turn;
-    }
+  for (let steps = 0; ; steps += 1) {
+    if (state.parcels.length === 0) return steps;
     const action = robot(state, memory);
     state = state.move(action.direction);
     memory = action.memory;
