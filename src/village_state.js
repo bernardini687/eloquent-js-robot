@@ -1,4 +1,4 @@
-import roadGraph from './data/roads';
+import roadGraph from '../data/roads';
 
 export default class VillageState {
   constructor(place, parcels) {

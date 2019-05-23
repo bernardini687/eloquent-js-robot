@@ -1,4 +1,4 @@
-import roadGraph from './data/roads';
+import roadGraph from '../data/roads';
 import VillageState from './village_state';
 import { randomPick, goalOrientedRobot } from './robots';
 
@@ -22,7 +22,7 @@ VillageState.random = (parcelCount = 5) => {
     let place;
     do {
       place = randomPick(Object.keys(roadGraph));
-    } while (place === address);
+    } while (place === address); // pick different place than address
     parcels.push({ place, address });
   }
   return new VillageState('Post Office', parcels);
